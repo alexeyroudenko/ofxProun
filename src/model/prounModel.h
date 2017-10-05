@@ -44,12 +44,10 @@ namespace proun {
         int getCountSelected();
         Node *lastSelected;
         
-        
-        
         void updateValuables();
         void evaluateInputs(Connectable *node);
         void connect(Connectable::Connection o, Connectable::Connection i) {
-            ofLogVerbose("MouseController", "connect:" + o.paramName + ":" + i.paramName);
+            ofLogVerbose("Model", "connect:" + o.paramName + "@" + o.node->getName() + "---" + i.paramName + "@" + i.node->getName());
             o.node->outputs.insert(pair<string, Connectable::Connection>(i.paramName, o));
             i.node->inputs[i.paramName] = o;
         };

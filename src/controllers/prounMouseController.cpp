@@ -214,7 +214,7 @@ void proun::MouseController::mouseReleased(ofMouseEventArgs &e) {
                         paramName = node.get()->input.getName(index);
                     } else {
                         index = node.get()->output.getIndexAtPoint(p);
-                        paramName = node.get()->input.getName(index);
+                        paramName = node.get()->output.getName(index);
                     }
                     
                     if (index >= 0) {

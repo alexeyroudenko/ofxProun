@@ -42,22 +42,16 @@ namespace proun {
             float vmin = this->min->get();
             float vmax = this->max->get();
             
-            //ofLogVerbose("evaluate names", ofToString(input.names.size()));
-            //ofLogVerbose("evaluate values", ofToString(input.values.size()));
-            
-            if (input.hasValue("value")) {
+            if (input.values.find("value") != input.values.end()) {
                 v = input.getValue<float>("value");
-                ofLogVerbose("value", ofToString(value));
             }
 
-            if (input.hasValue("min")) {
+            if (input.values.find("min") != input.values.end()) {
                 vmin = input.getValue<float>("min");
-                ofLogVerbose("min", ofToString(vmin));
             }
             
-            if (input.hasValue("max")) {
+            if (input.values.find("max") != input.values.end()) {
                 vmax = input.getValue<float>("max");
-                ofLogVerbose("max", ofToString(vmax));
             }
             
             this->result.get()->set(vmin + abs(v * (vmax - vmin)));

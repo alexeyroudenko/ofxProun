@@ -25,9 +25,8 @@ namespace proun {
         string getName(int index) {
             return names[index];
         }
-        
+
         ofPtr<ofAbstractParameter> getValue(string oname) {
-            
             if (type == PORT_TYPE_OUTPUT) {
                 std::multimap<string, ofPtr<ofAbstractParameter> >::iterator it = values.find(oname);
                 ofPtr<ofAbstractParameter> r = it->second;
@@ -49,7 +48,7 @@ namespace proun {
             return v;
         }
         
-        void setValue(string name, ofPtr<ofAbstractParameter> value) {
+        void setValue(const string &name, ofPtr<ofAbstractParameter> value) {
             values[name] = value;
         }
         
@@ -83,9 +82,7 @@ namespace proun {
                 return ofRectangle(width - size, proun::Style::nodeHeader + (size * index), size, size);
             }
         }
-        
-        bool hasValue(string name) {values.find(name) != values.end();}
-        
+            
         bool doesAllValuesExist() {
             for (vector<string>::iterator i = names.begin(); i != names.end(); i++) {
                 map<string, ofPtr<ofAbstractParameter> >::iterator val = values.find(*i);
@@ -160,5 +157,22 @@ namespace proun {
         map<string, Connection> inputs;
         multimap<string, Connection> outputs;
         
+        string debugString() {
+            stringstream info;
+            map<string, Connection>::iterator c = inputs.begin();
+            info << "\n\n[inputs]\n";
+            for (; c != inputs.end(); c++) {
+                ofPtr<ofAbstractParameter> outp = c->second.node->output.getValue(c->second.paramName);
+                info << getName() + ":" + c->first + "---" + c->second.node->getName() + ":" + c->second.paramName + "\n";
+            }
+            
+            info << "\n\n[outputs]\n";
+            map<string, Connection>::iterator ou = outputs.begin();
+            for (; ou != outputs.end(); ou++) {
+                info << getName() + ":" + ou->first + "----" + ou->second.node->getName() + ":" + ou->second.paramName + "\n";
+            }
+
+            return info.str();
+        };
     };
 }
