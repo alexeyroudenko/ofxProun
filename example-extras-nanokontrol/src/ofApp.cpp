@@ -13,9 +13,9 @@ void ofApp::setup()
     node = new ofxCircleModule();
     
     proun.setup("proun.csv");
-//#ifdef PROUN_EXTRAS
-//    proun.model->factory = new proun::ExtrasFactory();
-//#endif
+#ifdef PROUN_EXTRAS
+    proun.model->factory = new proun::ExtrasFactory();
+#endif
     proun.addNode(node);
     proun.load();
 }
