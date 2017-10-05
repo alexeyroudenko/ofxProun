@@ -9,9 +9,6 @@ namespace proun {
     class Model
     {
         
-    protected:
-        
-        
     public:
         
         Model() {}
@@ -37,7 +34,6 @@ namespace proun {
         NodePtr getById(int uid);
         NodePtr getByName(string name);
         
-        
         void update();
         void draw();
         
@@ -52,7 +48,7 @@ namespace proun {
         
         void updateValuables();
         void evaluateInputs(Connectable *node);
-        void connect(Connectable::Connection o, Connectable::Connection i) {            
+        void connect(Connectable::Connection o, Connectable::Connection i) {
             ofLogVerbose("MouseController", "connect:" + o.paramName + ":" + i.paramName);
             o.node->outputs.insert(pair<string, Connectable::Connection>(i.paramName, o));
             i.node->inputs[i.paramName] = o;

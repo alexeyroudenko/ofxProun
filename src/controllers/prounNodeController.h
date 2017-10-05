@@ -5,7 +5,7 @@ namespace proun {
     
     class prounNodeController {
     public:
-        vector<ofPtr<ofParameter<float>>> values;
+        vector<ofPtr<ofParameter<float>>> walkValues;
         int selectedIndex;
         
         prounNodeController():selectedIndex(-1) {
@@ -16,7 +16,7 @@ namespace proun {
         {
             if (key == ' ') {
                 selectedIndex++;
-                selectedIndex = selectedIndex % values.size();
+                selectedIndex = selectedIndex % walkValues.size();
             }
             
             float inc = 0;
@@ -34,7 +34,7 @@ namespace proun {
             if (key == 357) inc = 10.0;
             
             if (selectedIndex >= 0) {
-                ofPtr<ofParameter<float>> p = values[selectedIndex];
+                ofPtr<ofParameter<float>> p = walkValues[selectedIndex];
                 ofParameter<float>*pp = p.get();
                 float v = inc + pp->get();
                 pp->set(v);

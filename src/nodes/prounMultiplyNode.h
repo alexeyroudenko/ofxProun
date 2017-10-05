@@ -30,6 +30,7 @@ namespace proun {
         }
         
         virtual void contentDraw () {
+            height = 35;
             stringstream info;
             info << name + "::";
             if (validate()) {                

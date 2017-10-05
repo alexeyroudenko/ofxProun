@@ -13,7 +13,7 @@ namespace proun {
         ofPtr<ofParameter<T>> max;
         ofPtr<ofParameter<T>> result;
         
-        LerpNode(string name):Node(name),prounNodeController() {
+        LerpNode(string name):Node(name) {
             this->value = ofPtr<ofParameter<T>>(new ofParameter<float>(0.0));
             this->min = ofPtr<ofParameter<T>>(new ofParameter<float>(0.0));
             this->max = ofPtr<ofParameter<T>>(new ofParameter<float>(512.0));
@@ -22,12 +22,12 @@ namespace proun {
             input.add("value");
             input.add("min");
             input.add("max");
-            output.add("result");
             
+            output.add("result");
             output.setValue("result", ofPtr<ofAbstractParameter>(this->result));
             
-            values.push_back(this->min);
-            values.push_back(this->max);
+            walkValues.push_back(this->min);
+            walkValues.push_back(this->max);
         }
         
         virtual bool validate()
@@ -37,21 +37,29 @@ namespace proun {
         
         virtual void evaluate()
         {
+            
             float v = this->value->get();
             float vmin = this->min->get();
             float vmax = this->max->get();
             
+            //ofLogVerbose("evaluate names", ofToString(input.names.size()));
+            //ofLogVerbose("evaluate values", ofToString(input.values.size()));
+            
             if (input.hasValue("value")) {
                 v = input.getValue<float>("value");
+                ofLogVerbose("value", ofToString(value));
             }
-            
-            if (input.hasValue("value")) {
+
+            if (input.hasValue("min")) {
                 vmin = input.getValue<float>("min");
+                ofLogVerbose("min", ofToString(vmin));
             }
             
-            if (input.hasValue("value")) {
+            if (input.hasValue("max")) {
                 vmax = input.getValue<float>("max");
+                ofLogVerbose("max", ofToString(vmax));
             }
+            
             this->result.get()->set(vmin + abs(v * (vmax - vmin)));
             output.setValue("result", this->result);
         }
@@ -72,7 +80,7 @@ namespace proun {
             this->min->set(ofToFloat(tstrings[1]));
             this->max->set(ofToFloat(tstrings[2]));
         }
-
+        
         
         /* --------------------------------------------------------------
          #
@@ -88,7 +96,6 @@ namespace proun {
             info << name + "::";
             if (validate()) {
                 info << output.getValue("result")->toString() << endl;
-                
                 stringstream details;
                 details << (selectedIndex == 0 ? ">" : "") << ofToString(this->min->get()) << endl;
                 details << (selectedIndex == 1 ? ">" : "") << ofToString(this->max->get()) << endl;

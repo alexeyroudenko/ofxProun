@@ -1,0 +1,5 @@
+ofxGui
+ofxHistoryPlot
+ofxMidi
+ofxNanoKontrol2
+ofxProun

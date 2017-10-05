@@ -1,4 +1,5 @@
 #include "ofxProun.h"
+#include "prounFactory.h"
 
 proun::App::App() {
     
@@ -6,7 +7,7 @@ proun::App::App() {
     
     model = new Model();
     controller = new Controller(model);
-       
+    
     mouseController.setup(model);
     
     keyboardController = new KeyboardController();
@@ -25,7 +26,6 @@ void proun::App::setup(string fileName) {
     
     model->fileName = fileName;
     model->factory = new Factory();
-    
     addNode(Settings::getInstance().settings);
 };
 
@@ -99,7 +99,7 @@ void proun::App::addNode(ofParameterGroup *settings,  bool isOutput) {
 void proun::App::addNode(FboNode *node,  bool isOutput) {
     ofLogVerbose("proun::App", node->settings->getName());
     guiAdapter.addNode(node->settings, isOutput);
-    fboAdapter.addNode(node);    
+    fboAdapter.addNode(node);
 }
 
 /* --------------------------------------------------------------

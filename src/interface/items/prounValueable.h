@@ -27,9 +27,19 @@ namespace proun {
         }
         
         ofPtr<ofAbstractParameter> getValue(string oname) {
-            std::multimap<string, ofPtr<ofAbstractParameter> >::iterator it = values.find(oname);
-            ofPtr<ofAbstractParameter> r = it->second;
-            return r;
+            
+            if (type == PORT_TYPE_OUTPUT) {
+                std::multimap<string, ofPtr<ofAbstractParameter> >::iterator it = values.find(oname);
+                ofPtr<ofAbstractParameter> r = it->second;
+                return r;
+            }
+            
+            map<string, ofPtr<ofAbstractParameter> >::iterator i = values.find(oname);
+            if (i == values.end()) {
+                ofLog(OF_LOG_ERROR) << "can't find input value named " << oname << endl;
+            }
+            return i->second;
+
         }
         
         template <typename inType>
