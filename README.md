@@ -15,11 +15,16 @@ Create gui and nodes from ofParameterGroup automaticaly.
 </table>  
 
 
-Creating from ofParameterGroup
+## Creating from ofParameterGroup
 
 ![image](http://arthew0.online/cc/img/ofxproun_01.png)
 
-Node ang Gui:
+
+## Node ang Gui:
 
 ![image](http://arthew0.online/cc/img/ofxproun_02.png)
 
+
+## Extras with korg ofxNanoKontrol2 and ofxHistoryPlot addons integrations
+
+![image](http://arthew0.online/cc/img/ofxproun_03.png)
