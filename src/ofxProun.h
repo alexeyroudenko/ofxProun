@@ -9,6 +9,10 @@
 #include "prounFboAdapter.h"
 #include "prounGuiAdapter.h"
 
+#include "prounModule.h"
+#include "prounPatchingModule.h"
+//#include "prounPresetsModule.h"
+
 namespace proun {
     
     class App
@@ -20,8 +24,11 @@ namespace proun {
         
         MouseController mouseController;
         EmptyKeyboardController *keyboardController;
+        
         GuiAdapter guiAdapter;
         FboAdapter fboAdapter;
+        
+        Module *getState();
         
         void onSelect(proun::Model::prounEventArgs &e);
         void onChangeModel(proun::Model &model);
@@ -35,12 +42,14 @@ namespace proun {
         Controller *controller;
         
         void setup(string fileName);
+        void initModules();
         void update();
         void draw();
         
         void load();
         void save();
         
+        //void addModule(Module *module);
         void addNode(ofParameterGroup *settings,  bool isOutput = false);
         void addNode(FboNode *node,  bool isOutput = false);
         
@@ -51,8 +60,5 @@ namespace proun {
         void enableButtons();
         void disableButtons();
         void disableAllButtons();
-        
-        string getHelpString();
-        
     };
 }

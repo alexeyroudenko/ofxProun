@@ -53,20 +53,23 @@ void proun::KeyboardController::keyPressed(ofKeyEventArgs &e) {
         model->lastSelected->keyPressed(e.key);
     }
     
-    if (Settings::getInstance().doDrawNodes &&
-        Settings::getInstance().info == 1) {
-        unsigned idx = e.key - '0';
-        if (idx < model->factory->getTypes().size() && idx < 10) {
-
-            if (isShift) {
-                idx += 10;
-                if (idx < model->factory->getTypes().size()) {
+    model->modules->keyPressed(e);
+    
+    if (model->modules->doPresets() == false) {
+        if (Settings::getInstance().doDrawNodes) {
+            unsigned idx = e.key - '0';
+            if (idx < model->factory->getTypes().size() && idx < 10) {
+                
+                if (isShift) {
+                    idx += 10;
+                    if (idx < model->factory->getTypes().size()) {
+                        if (Settings::getInstance().doCreations) createByNumber(idx);
+                    }
+                } else {
                     if (Settings::getInstance().doCreations) createByNumber(idx);
                 }
-            } else {
-                if (Settings::getInstance().doCreations) createByNumber(idx);
-            }
-        };
+            };
+        }
     }
     
     if (model->getCountSelected() > 1) {

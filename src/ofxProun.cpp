@@ -1,6 +1,7 @@
 #include "ofxProun.h"
 #include "prounFactory.h"
 
+
 proun::App::App() {
     
     ofLogVerbose("App", "constructor");
@@ -27,7 +28,13 @@ void proun::App::setup(string fileName) {
     model->fileName = fileName;
     model->factory = new Factory();
     addNode(Settings::getInstance().settings);
+
 };
+
+void proun::App::initModules() {
+    model->modules->setup();
+    model->modules->add(new PatchingModule());    
+}
 
 void proun::App::update() {
     model->update();
@@ -85,7 +92,9 @@ void proun::App::onSelect(proun::Model::prounEventArgs &e) {
 
 void proun::App::onChangeModel(proun::Model &model) {}
 
-
+//void proun::App::addModule(Module *module) {
+//    modulesAdapter.add(module);
+//}
 /* --------------------------------------------------------------
  # nodes
  #
@@ -169,12 +178,14 @@ void proun::App::drawInfo(string externalString, bool append) {
     
     stringstream help;
     help << "fps: " + ofToString(ofGetFrameRate()) + "\n\n";
-    if (Settings::getInstance().info >= 1) {
-        help << "[APP]:\n";
-        help << getHelpString();
+    help << model->modules->getInfo() + "\n\n";
+
+    if (model->modules->doPresets() == false) {    
+        if (keyboardController->isShift) help << "shifting\n\n";
+        for (int i = 0; i < model->factory->getTypes().size(); i++) {
+            help << ofToString(i) << ":" << model->factory->getTypes()[i] << "\n";
+        }
     }
-    if (Settings::getInstance().info >= 2) help << "\nnodes: " + ofToString(Settings::getInstance().doDrawNodes) + "\n";
-    if (Settings::getInstance().info >= 2) help << externalString << endl << endl;
     
     ofSetHexColor(0x333333);
     ofRectangle rect = proun::Style::font->getStringBoundingBox(help.str(), 0, 0);
@@ -189,23 +200,4 @@ void proun::App::drawInfo(string externalString, bool append) {
     proun::Style::font->drawString(help.str(), 10, ofGetHeight() - rect.height - 5);
 }
 
-string proun::App::getHelpString() {
-    stringstream help;
-    help << "[ofxProun]:\n";
-    help << "[`] toggle shift\n";
-    help << "[s] save patch\n";
-    help << "[l] load patch\n";
-    help << "[n] clear patch\n";
-    help << "[g] toggle all guis (" + ofToString(Settings::getInstance().showGUIS) + ")\n";
-    help << "[d] toggle info (" + ofToString(Settings::getInstance().info) + ")\n";
-    help << "[m] toggle moves (" + ofToString(Settings::getInstance().doMoves) + ")\n";
-    help << "[DEL]: delete node\n\n";
-    
-    if (keyboardController->isShift) help << "shifting\n\n";
-    
-    for (int i = 0; i < model->factory->getTypes().size(); i++) {
-        help << ofToString(i) << ":" << model->factory->getTypes()[i] << "\n";
-    }
-    
-    return help.str();
-}
+

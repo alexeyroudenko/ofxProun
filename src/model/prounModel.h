@@ -3,6 +3,7 @@
 #include "prounValueable.h"
 #include "prounNode.h"
 #include "prounFactory.h"
+#include "prounModulesAdapter.h"
 
 namespace proun {
     
@@ -11,9 +12,13 @@ namespace proun {
         
     public:
         
-        Model() {}
-        vector<NodePtr>nodes;
+        ModulesAdapter *modules;
         
+        Model() {
+            modules = new ModulesAdapter();
+        }
+    
+        vector<NodePtr>nodes;
         Factory *factory;
         
         string fileName = "proun.csv";

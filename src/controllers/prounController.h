@@ -10,7 +10,6 @@ namespace proun {
     protected:
         Model *model;
         
-        
     public:
         Controller(Model *model_) {
             model = model_;

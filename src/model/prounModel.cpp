@@ -10,6 +10,7 @@ void proun::Model::add(NodePtr nodePtr) {
 
 void proun::Model::update() {
     updateValuables();
+    modules->update();
 };
 
 void proun::Model::updateValuables() {
@@ -42,7 +43,6 @@ void proun::Model::evaluateInputs(Connectable *node) {
         }
     }
 }
-
 
 void proun::Model::draw() {
     for (auto it = nodes.begin(); it != nodes.end(); ++it) {

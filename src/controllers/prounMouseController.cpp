@@ -208,16 +208,19 @@ void proun::MouseController::mouseReleased(ofMouseEventArgs &e) {
                 if (tempConnection.active == true) {
                     
                     int index = -1;
-                    string paramName = "";
                     if (tempConnection.portType == PORT_TYPE_OUTPUT) {
                         index = node.get()->input.getIndexAtPoint(p);
-                        paramName = node.get()->input.getName(index);
                     } else {
                         index = node.get()->output.getIndexAtPoint(p);
-                        paramName = node.get()->output.getName(index);
                     }
                     
                     if (index >= 0) {
+                        string paramName = "";
+                        if (tempConnection.portType == PORT_TYPE_OUTPUT) {
+                            paramName = node.get()->input.getName(index);
+                        } else {
+                            paramName = node.get()->output.getName(index);
+                        }
                         
                         if (tempConnection.portType == PORT_TYPE_OUTPUT) {
                             

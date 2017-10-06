@@ -19,9 +19,9 @@ int proun::Style::textColor = 150;
 int proun::Style::textPaddingX = 10;
 int proun::Style::textPaddingY = 10;
 int proun::Style::bgColor = 32;
-int proun::Style::bgAlpha = 128;
-int proun::Style::selected = 196;
-int proun::Style::hover = 64;
+int proun::Style::bgAlpha = 200;
+int proun::Style::selected = 170;
+int proun::Style::hover = 255;
 
 
 void proun::Style::loadFont(string file, int size) {
