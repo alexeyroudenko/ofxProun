@@ -1,13 +1,11 @@
 # [ofxProun]
-Create gui and nodes from ofParameterGroup automaticaly.
+Create gui and nodes automaticaly. Idea is using ofParameterGroup as modules config.
 
 ### Shortcuts
 <table>
-    <tr>
-        <td style="font-weight:bold">Function</td><td style="font-weight:bold">Shortcut</td>
-    </tr>
-    <tr><td>Show patch</td><td>TAB</td></tr>
-    <tr><td>Toggle info box</td><td>i</td></tr>
+  <tr><td style="font-weight:bold">Function</td><td style="font-weight:bold">Shortcut</td></tr>
+  <tr><td>Show patch</td><td>TAB</td></tr>
+  <tr><td>Toggle info box</td><td>i</td></tr>
   <tr><td>Load</td><td>l</td></tr>
   <tr><td>Save patch</td><td>s</td></tr>
   <tr><td>Clear patch</td><td>n</td></tr>
@@ -15,11 +13,14 @@ Create gui and nodes from ofParameterGroup automaticaly.
 </table>  
 
 
-Creating from ofParameterGroup
-
+## Creating from ofParameterGroup
 ![image](http://arthew0.online/cc/img/ofxproun_01.png)
 
-Node ang Gui:
 
+## Node ang Gui:
 ![image](http://arthew0.online/cc/img/ofxproun_02.png)
 
+
+## Extras 
+With korg ofxNanoKontrol2 and ofxHistoryPlot addons integrations
+![image](http://arthew0.online/cc/img/ofxproun_03.png)
