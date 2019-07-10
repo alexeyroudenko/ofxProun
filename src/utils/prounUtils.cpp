@@ -12,7 +12,14 @@ string proun::Utils::getLogFileName() {
 
 string proun::Utils::getHostName() {
     if (savedHostName.empty() == false) return savedHostName;
-    FILE* stream = popen("hostname", "r");
+    //FILE* stream = popen("hostname", "r");
+
+#ifdef _WIN32
+	FILE* stream = _popen(" ", "w");
+#else
+	FILE* stream = popen(" ", "w");
+#endif
+
     ostringstream output;
     while(!feof(stream) && !ferror(stream)) {
         char buf[128];

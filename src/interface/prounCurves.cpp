@@ -7,7 +7,7 @@ void proun::Curves::smoothStepCurve( ofVec2f _start, ofVec2f _end, int _res) {
     {
         ofVec2f tmpPoint = _start.getInterpolated( _end, k / (float)(_res-1) );
         tmpPoint.y = ofMap( smoothstep(_start.x, _end.x, tmpPoint.x), 0, 1, _start.y, _end.y );
-        tmpMesh.addVertex( tmpPoint );
+        tmpMesh.addVertex(ofVec3f(tmpPoint.x, tmpPoint.y, 0));
     }
     ofPushStyle();
     ofSetLineWidth(2);

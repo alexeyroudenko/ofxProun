@@ -12,6 +12,7 @@ namespace proun {
     public:
         
         virtual bool doPresets() {
+			return false;
         };
         
         virtual void setup(){
@@ -23,7 +24,7 @@ namespace proun {
         virtual void draw(){
         };
         
-        virtual string getInfo() {};
+		virtual string getInfo() { return ""; };
         
         virtual void keyPressed(int key) {};
     };

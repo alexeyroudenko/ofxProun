@@ -39,7 +39,7 @@ namespace proun {
         {
             int k = 0;
             for (vector<string>::iterator i = input.names.begin(); i != input.names.end(); i++) {
-                map<string, ofPtr<ofAbstractParameter> >::iterator val = input.values.find(*i);
+				std::map<string, ofPtr<ofAbstractParameter> >::iterator val = input.values.find(*i);
                 if (val != input.values.end()) {
                     ofPtr<ofAbstractParameter> iptr = val->second;
                     string name = val->first;

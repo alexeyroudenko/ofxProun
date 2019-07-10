@@ -60,7 +60,7 @@ void proun::Node::draw() {
 
 void proun::Node::drawInputs(Connectable *node) {
     ofSetColor(255);
-    map<string, Node::Connection>::iterator c = node->inputs.begin();
+	std::map<std::string, Node::Connection>::iterator c = node->inputs.begin();
     for (; c != node->inputs.end(); c++) {
         Connectable *node2 = c->second.node;
         ofRectangle r1 = node2->output.getRect(c->second.paramName);

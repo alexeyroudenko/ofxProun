@@ -2,6 +2,8 @@
 #include "prounDraggable.h"
 #include "prounCurves.h"
 
+using namespace std;
+
 namespace proun {
     
     enum PORT_TYPE {
@@ -154,12 +156,12 @@ namespace proun {
             string paramName;
         };
         
-        map<string, Connection> inputs;
+        std::map<string, Connection> inputs;
         multimap<string, Connection> outputs;
         
         string debugString() {
             stringstream info;
-            map<string, Connection>::iterator c = inputs.begin();
+			std::map<string, Connection>::iterator c = inputs.begin();
             info << "\n\n[inputs]\n";
             for (; c != inputs.end(); c++) {
                 ofPtr<ofAbstractParameter> outp = c->second.node->output.getValue(c->second.paramName);
@@ -167,7 +169,7 @@ namespace proun {
             }
             
             info << "\n\n[outputs]\n";
-            map<string, Connection>::iterator ou = outputs.begin();
+			std::map<string, Connection>::iterator ou = outputs.begin();
             for (; ou != outputs.end(); ou++) {
                 info << getName() + ":" + ou->first + "----" + ou->second.node->getName() + ":" + ou->second.paramName + "\n";
             }
