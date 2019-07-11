@@ -59,6 +59,7 @@ namespace proun {
         void ckeckLocalConfig();
         void enableButtons();
         void disableButtons();
+        void disableMouse();
         void disableAllButtons();
     };
 }

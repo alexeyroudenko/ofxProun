@@ -167,6 +167,10 @@ void proun::App::disableAllButtons() {
     keyboardController->setup(controller, model);
 }
 
+void proun::App::disableMouse() {
+    mouseController.disable();
+}
+
 
 /* --------------------------------------------------------------
  # info

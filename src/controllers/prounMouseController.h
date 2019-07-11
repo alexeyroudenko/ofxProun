@@ -16,6 +16,7 @@ namespace proun {
         
         void setup(Model *model_);    
         void draw();
+        void disable();
         
         /* --------------------------------------------------------------
          # ofxProun::Mouse

@@ -18,6 +18,10 @@ void proun::MouseController::draw() {
     }
 }
 
+void proun::MouseController::disable() {
+    ofUnregisterMouseEvents(this);
+}
+
 
 /* --------------------------------------------------------------
  # ofxProun::Mouse
