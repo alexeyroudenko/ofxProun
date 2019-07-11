@@ -7,6 +7,7 @@ namespace proun {
     public:
         static ofPtr<ofTrueTypeFont> font;
         static ofPtr<ofTrueTypeFont> bigFont;
+        static ofPtr<ofTrueTypeFont> bigggFont;
         static int moveDelta;
         static int round;
         static int roundEdges;
@@ -28,6 +29,7 @@ namespace proun {
         static int selected;
         static void loadFont(string file, int size);
         static void loadBigFont(string file, int size);
+        static void loadBigggFont(string file, int size);
         
         static Style& getInstance() {
             static Style INSTANCE;

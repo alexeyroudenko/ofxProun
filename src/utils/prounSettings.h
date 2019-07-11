@@ -52,6 +52,7 @@ namespace proun {
             
             proun::Style::loadFont("fonts/iflash-502.ttf", 6);
             proun::Style::loadBigFont("fonts/iflash-705.ttf", 6);
+            proun::Style::loadBigggFont("fonts/iflash-705.ttf", 18);
         };
     };
 }

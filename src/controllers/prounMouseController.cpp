@@ -9,6 +9,7 @@ void proun::MouseController::setup(Model *model_) {
 }
 
 void proun::MouseController::draw() {
+        
     if (tempConnection.active) {
         ofDrawLine(tempConnection.p1.x, tempConnection.p1.y, ofGetMouseX(), ofGetMouseY());
     }
@@ -20,6 +21,10 @@ void proun::MouseController::draw() {
 
 void proun::MouseController::disable() {
     ofUnregisterMouseEvents(this);
+}
+
+void proun::MouseController::enable() {
+    ofRegisterMouseEvents(this);
 }
 
 

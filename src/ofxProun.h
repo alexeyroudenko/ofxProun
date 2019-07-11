@@ -60,6 +60,7 @@ namespace proun {
         void enableButtons();
         void disableButtons();
         void disableMouse();
+        void enableMouse();
         void disableAllButtons();
     };
 }

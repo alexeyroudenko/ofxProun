@@ -2,6 +2,7 @@
 
 ofPtr<ofTrueTypeFont> proun::Style::font;
 ofPtr<ofTrueTypeFont> proun::Style::bigFont;
+ofPtr<ofTrueTypeFont> proun::Style::bigggFont;
 
 int proun::Style::moveDelta = 5;
 int proun::Style::width = 80;
@@ -32,4 +33,9 @@ void proun::Style::loadFont(string file, int size) {
 void proun::Style::loadBigFont(string file, int size) {
     bigFont = ofPtr<ofTrueTypeFont>(new ofTrueTypeFont());
     bigFont->load(file, size);
+}
+
+void proun::Style::loadBigggFont(string file, int size) {
+    bigggFont = ofPtr<ofTrueTypeFont>(new ofTrueTypeFont());
+    bigggFont->load(file, size);
 }
